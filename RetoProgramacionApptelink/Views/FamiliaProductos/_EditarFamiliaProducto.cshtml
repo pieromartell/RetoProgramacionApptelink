@@ -1,0 +1,50 @@
+﻿@model FamiliaProductos
+
+<div class="modal  fade" id="editFamilia-@Model.IdFamilia" aria-labelledby="editModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Editar Familia Producto</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <form asp-action="edit" method="post">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="modal-body">
+                    <div class="mb-3">
+                        <label asp-for="IdFamilia" class="col-form-label"></label>
+                        <input asp-for="IdFamilia" type="text" class="form-control"  readonly>
+                        <span asp-validation-for="IdFamilia" class="text-danger"></span>
+                    </div>
+                        <div class="mb-3">
+                            <label asp-for="Codigo" class="col-form-label"></label>
+                        <input asp-for="Codigo" type="text" class="form-control" readonly>
+                            <span asp-validation-for="Codigo" class="text-danger"></span>
+                        </div>
+                        <div class="mb-3">
+                            <label asp-for="Nombre" class="col-form-label"></label>
+                            <input asp-for="Nombre" type="text" class="form-control">
+                            <span asp-validation-for="Nombre" class="text-danger"></span>
+                        </div>
+                    <div class="mb-3">
+                        <label asp-for="Activo" class="col-form-label"></label>
+                        <select asp-for="Activo" class="form-select form-select-sm" aria-label=".form-select-sm example">
+                            <option value="true">Activo</option>
+                            <option value="false">Inactivo</option>
+                        </select>
+                        <span asp-validation-for="Activo" class="text-danger"></span>
+                    </div>
+                    <div class="mb-3">
+                        <label asp-for="FechaCreacion" class="col-form-label"></label>
+                        <input asp-for="FechaCreacion" type="date" class="form-control">
+                        <span asp-validation-for="FechaCreacion" class="text-danger"></span>
+                    </div>
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                    <button type="submit" class="btn btn-primary">Guardar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,64 @@
+﻿@model RetoProgramacionApptelink.Models.LoginUser
+@{
+    ViewData["Title"] = "Login";
+    Layout = null;
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - RetoProgramacionApptelink</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/Login.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/RetoProgramacionApptelink.styles.css" asp-append-version="true" />
+</head>
+<body>
+    <div class="container ">
+        <div class="row">
+            <center>
+                <div class="col-md-4 m-3 mx-5">
+                    <form asp-action="Login" class="bg-white pt-5 mt-5 px-3 pb-5 rounded-3">
+                        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                        <div class = "form-group pt-3">
+                            <img src="~/img/CitiKoldLogo.png" alt="Icono de CitiKold"/>
+                        </div>
+                        <h3>Inicio de Sesion</h3>
+                        <div class="form-group pt-3">
+                            <label asp-for="username" class="control-label w-100" style="text-align:start"></label>
+                            <input asp-for="username" type="text" class="form-control border-bottom   inputModificado w-100" placeholder="&#xf007;" />
+                            <span asp-validation-for="username" class="text-danger"></span>
+                        </div>
+                        <div class="form-group  pt-3">
+                            <label asp-for="password" class="control-label w-100" style="text-align:start"></label>
+                            <input asp-for="password" type="password" class="form-control border-bottom inputModificado w-100" placeholder="&#xf023;" />
+                            <span asp-validation-for="password" class="text-danger"></span>
+                        </div>
+                        <div class="form-group pt-3">
+                            @if (Model.IntentosFallidos < 3)
+                            {
+                                <input type="submit" value="Iniciar Sesion" class="btn btn-primary w-100" />
+                            }
+                            else
+                            {
+                                <input disabled="disabled" type="submit" value="Inicio Sesion" class="btn btn-primary w-100" />
+
+                            }
+
+                        </div>
+                    </form>
+                </div>
+            </center>
+        </div>
+    </div>
+
+
+
+<script src="https://kit.fontawesome.com/eedfeef8e9.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</body>
+</html>
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
+

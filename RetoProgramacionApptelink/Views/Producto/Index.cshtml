@@ -1,0 +1,74 @@
+﻿@using RetoProgramacionApptelink.Models.ViewModels;
+@model IEnumerable<RetoProgramacionApptelink.Models.Producto>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1 class="text-center text-danger">Productos</h1>
+
+<button type="button" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#CreateProductos" data-url="@Url.Action("Create")">Crear</button>
+@await Html.PartialAsync("_createProduct",new ProductoViewModel())
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Id Producto
+            </th>
+            <th>
+                Codigo
+            </th>
+            <th>
+                Nombre
+            </th>
+            <th>
+                IDFamilia
+            </th>
+            <th>
+                Activo
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdProducto)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Codigo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nombre)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdFamilia)
+            </td>
+                @if(item.Activo == true)
+                {
+                    <td>
+                        Activo
+                    </td>
+                }
+                else
+                {
+                    <td>
+                        Inactivo
+                    </td>
+                }
+
+            <td>
+
+                <button type="button" class="btn btn-outline-info" data-bs-toggle="modal" data-bs-target="#detalleProducto-@item.IdProducto" data-url="@Url.Action($"Detalles/{item.IdProducto}")">Detalle</button>
+                @await Html.PartialAsync("_DetalleProducto",item)
+                <button type="button" class="btn btn-outline-success" data-bs-toggle="modal" data-bs-target="#editProducto-@item.IdProducto" data-url="@Url.Action($"Edit/{item.IdProducto}")">Editar</button>
+                @await Html.PartialAsync("_EditarProducto",item)
+                <a asp-action="Delete" asp-route-id="@item.IdProducto" class="btn btn-outline-danger">Eliminar</a>
+
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

@@ -1,0 +1,81 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - RetoProgramacionApptelink</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/RetoProgramacionApptelink.styles.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/menu.css" />
+</head>
+<body>
+    <header>
+        
+    </header>
+    <div class="container mt-5 pb-5 px-4 bg-white">
+        <main role="main" class="pb-4">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-4 ">
+                        <ul class="accordion-menu">
+                            <li class="link">
+                                <ul class="dropdownsPlaceBlank1">
+                                </ul>
+                                <div>
+                                    <div class="dropdowns">
+                                        <i class="fa-solid fa-bars"></i>
+                                        Pagina Principal
+                                    </div>
+                                    <ul class="submenuItems">
+                                        <li><a asp-area="" asp-controller="Login" asp-action="Menu">Menu</a></li>
+                                    </ul>
+                                </div>
+                                
+                                <div class="dropdowns">
+                                    <i class="fa-solid fa-bag-shopping"></i>
+                                                  Catalogos
+                                </div>
+                                <ul class="submenuItems">
+                                    <li><a asp-area="" asp-controller="FamiliaProductos" asp-action="Index">Familia Productos</a></li>
+                                    <li><a asp-area="" asp-controller="Producto" asp-action="Index">Producto</a></li>
+                                </ul>
+                            </li>
+                            <li class="link">
+                                <div class="dropdowns">
+                                    <i class="fa-solid fa-file"></i>
+                                                 Documentos
+
+                                </div>
+                                <ul class="submenuItems">
+                                    <li><a asp-area="" asp-controller="Facturas" asp-action="Index">Facturas</a></li>
+                                </ul>
+                                <ul class="dropdownsPlaceBlank2">
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="col-md-8 mt-5 ">
+                        @RenderBody()
+                    </div>
+                </div>
+
+            </div>
+            
+        </main>
+    </div>
+
+    <footer class="border-top footer text-muted">
+        <div class="container >
+            &copy; 2023 - RetoProgramacionApptelink - <a asp-area="" asp-controller="Login" asp-action="Menu">Menu</a>
+        </div>
+    </footer>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    <script src="https://kit.fontawesome.com/eedfeef8e9.js" crossorigin="anonymous"></script>
+    <script src="~/js/menu.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

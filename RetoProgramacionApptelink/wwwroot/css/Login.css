@@ -1,0 +1,29 @@
+﻿
+html {
+    position: relative;
+    min-height: 100%;
+}
+
+body {
+    background-color: #343673;
+    margin-bottom: 60px;
+    font-family: Georgia, serif;
+    font-size: 14px;
+}
+@media (min-width: 768px) {
+    html {
+        font-size: 16px;
+    }
+}
+
+label {
+    text-align: start;
+    font-size: 16px;
+}
+
+
+input.inputModificado {
+    text-align: start !important;
+    background: transparent !important;
+    font-family: Georgia,FontAwesome
+}

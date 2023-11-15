@@ -1,0 +1,87 @@
+﻿@model Producto
+
+<div class="modal  fade" id="detalleProducto-@Model.IdProducto" aria-labelledby="editModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Detalle Producto</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+                <div class="modal-body">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>
+                                IDProducto
+                            </th>
+                            <th>
+                                Codigo
+                            </th>
+                            <th>
+                                Nombre
+                            </th>
+                            <th>
+                                IDFamilia
+                            </th>
+                            <th>
+                                Precio
+                            </th>
+                            <th>
+                                Stock
+                            </th>
+                            <th>
+                                Activo
+                            </th>
+                            <th>
+                                Fecha Creacion
+                            </th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                            <tr>
+                                <td>
+                                    @Model.IdProducto
+                                </td>
+                                <td>
+                                    @Model.Codigo
+                                </td>
+                                <td>
+                                    @Model.Nombre
+                                </td>
+                                <td>
+                                    @Model.IdFamilia
+                                </td>
+                                <td>
+                                    @Model.Precio
+                                </td>
+                                <td>
+                                    @Model.Stock
+                                </td>
+                                @if(Model.Activo == true)
+                                {
+                                <td>
+                                    Activo
+                                </td>
+                                }else{
+
+                                <td>
+                                    Inactivo
+                                </td>
+                                }
+
+                                <td>
+                                    @Model.FechaCreacion.ToString("yyyy-MM-dd")
+                                </td>
+                            </tr>
+                        
+                    </tbody>
+                </table>
+               </div>
+        </div>
+    </div>
+</div>
+
+
+
+

@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.7.34202.233
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RetoProgramacionApptelink", "RetoProgramacionApptelink\RetoProgramacionApptelink.csproj", "{3666DD9B-DA09-4820-99B3-1C3720FBE851}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{3666DD9B-DA09-4820-99B3-1C3720FBE851}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3666DD9B-DA09-4820-99B3-1C3720FBE851}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3666DD9B-DA09-4820-99B3-1C3720FBE851}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3666DD9B-DA09-4820-99B3-1C3720FBE851}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {189EDC1B-CE87-415C-B981-3CC9049D29E4}
+	EndGlobalSection
+EndGlobal

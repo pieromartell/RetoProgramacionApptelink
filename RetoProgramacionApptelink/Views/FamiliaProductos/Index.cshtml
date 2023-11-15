@@ -1,0 +1,75 @@
+﻿@using RetoProgramacionApptelink.Models.ViewModels;
+@model IEnumerable<RetoProgramacionApptelink.Models.FamiliaProductos>
+
+@{
+    ViewData["Title"] = "Index";
+    
+
+}
+
+<h1 class="text-center text-info">Familia de Productos</h1>
+
+
+<button type="button" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#CreateFamiliaProductos" data-url="@Url.Action("Create")">Crear</button>
+@await Html.PartialAsync("_CreateFamilia",new FamiliaProductosViewModel())
+
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.IdFamilia)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Codigo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Nombre)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FechaCreacion)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Activo)
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                    @Html.DisplayFor(modelItem => item.IdFamilia)
+            </td>
+            <td>
+                    @Html.DisplayFor(modelItem => item.Codigo)
+            </td>
+            <td>
+                    @Html.DisplayFor(modelItem => item.Nombre)
+            </td>
+            <td>
+                    @item.FechaCreacion.ToString("yyyy-MM-dd")
+            </td>
+            @if (item.Activo == true)
+            {
+                    <td>
+                        Activo
+                    </td>
+                }
+                else
+                {
+                    <td>
+                        Inactivo
+                    </td>
+                }
+
+            <td>
+                <button type="button" class="btn btn-outline-success" data-bs-toggle="modal" data-bs-target="#editFamilia-@item.IdFamilia" data-url="@Url.Action($"edit/{item.IdFamilia}")">Actualizar</button>                    
+                @await Html.PartialAsync("_EditarFamiliaProducto",item)
+                <a asp-action="Delete" asp-route-id="@item.IdFamilia" class="btn btn-outline-danger">Eliminar</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+
+

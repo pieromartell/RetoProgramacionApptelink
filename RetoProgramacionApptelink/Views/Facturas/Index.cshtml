@@ -1,0 +1,55 @@
+﻿@using RetoProgramacionApptelink.Models.ViewModels;
+@model List<CabeceraFactura>
+
+<h1 class="text-center text-dark">Lista de Facturas</h1>
+
+
+<a class="btn btn-primary" asp-action="create">Crear una Factura</a>
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>
+                Id Factura
+            </th>
+            <th>
+                NroFacturas
+            </th>
+            <th>
+                Ruc Cliente
+            </th>
+            <th>
+                RazonSocialCLiente
+            </th>
+
+        </tr>
+    </thead>
+    <tbody>
+        @foreach(var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(itenmodel=>item.IdFactura)
+                </td>
+                <td>
+                    @Html.DisplayFor(itenmodel=>item.NroFacturas)
+                </td>
+                <td>
+                    @Html.DisplayFor(itenmodel=>item.RucCliente)
+                </td>
+                <td>
+                    @Html.DisplayFor(itenmodel=>item.RazonSocialCLiente)
+                </td>
+                <td>
+
+
+                    <a asp-action="listarDetallesItem" asp-route-id="@item.IdFactura" class="btn btn-success">Agregar Items</a>
+                    <a asp-action="delete" asp-route-id="@item.IdFactura" class="btn btn-danger text-black">Eliminar</a>
+                </td>
+            </tr>
+            
+        }
+
+    </tbody>
+</table>
+

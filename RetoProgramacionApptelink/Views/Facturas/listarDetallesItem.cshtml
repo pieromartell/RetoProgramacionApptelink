@@ -1,0 +1,124 @@
+﻿@model RetoProgramacionApptelink.Models.ViewModels.FacturasViewModel
+
+@{
+    ViewData["Title"] = "_listarDetallesItem";
+}
+
+<h1 class="text-center">Agregar Items a la factura</h1>
+<div class="container">
+    <form asp-action="crearDetalleListado" method="post">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="DetalleFacturaViewModel.IdFactura" class="control-label"></label>
+            <input asp-for="DetalleFacturaViewModel.IdFactura" value="@Model.idFactura" class="form-control" readonly />
+            <span asp-validation-for="DetalleFacturaViewModel.IdFactura" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+            <label asp-for="DetalleFacturaViewModel.CodigoProducto" class="control-label"></label>
+            <select asp-for="DetalleFacturaViewModel.CodigoProducto" id="selectEnvio" class="form-select form-select-sm" aria-label=".form-select-sm example">
+                @foreach (var item in ViewBag.ListadoProducto)
+                {
+                    <option value="@item.Value" data="@item.Precio">@item.Text</option>
+                }
+            </select>
+            <span asp-validation-for="DetalleFacturaViewModel.CodigoProducto" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+            <label asp-for="DetalleFacturaViewModel.Cantidad" class="control-label"></label>
+            <input asp-for="DetalleFacturaViewModel.Cantidad" class="form-control" value="1"/>
+            <span asp-validation-for="DetalleFacturaViewModel.Cantidad" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+            <label asp-for="DetalleFacturaViewModel.Precio" class="control-label"></label>
+            <input asp-for="DetalleFacturaViewModel.Precio" id="IDPrecio" class="form-control" type="text" readonly />
+                <span asp-validation-for="DetalleFacturaViewModel.Precio" class="text-danger"></span>
+            </div>
+            <button type="submit" class="btn btn-primary mt-3">Guardar</button>
+    </form>
+</div>
+
+
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    Id Item
+                </th>
+                <th>
+                    Id Factura
+                </th>
+                <th>
+                    Codigo
+                </th>
+                <th>
+                    Nombre
+                </th>
+                <th>
+                    Cantidad
+                </th>
+                <th>
+                    Precio
+                </th>
+                <th>
+                    Subtotal
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @if(Model.ListdetalleFacturas == null)
+            {
+                <tr>
+            </tr>
+        }
+        else
+        {
+            
+            @foreach (var item in Model.ListdetalleFacturas)
+            {
+                <tr>
+                    <td>
+                            @Html.DisplayFor(modelItem => item.IdItem)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.IdFactura)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.CodigoProducto)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Nombre)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Cantidad)
+                        </td>
+                        <td>
+                            @item.Precio
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.subtotal)
+                        </td>
+                        <td>
+                        <a asp-action="deleteDetalleListado" asp-route-id="@item.IdItem" asp-route-idfactura="@item.IdFactura" class="btn btn-danger text-black">Eliminar</a>
+                        </td>
+                    </tr>
+                }
+            }
+        </tbody>
+    </table>
+<p class="text-end " style="padding-right:10px">El subtotal es: @ViewBag.subtotal</p>
+<p class="text-end" style="padding-right:10px">El IGV es: @ViewBag.igv</p>
+<p class="text-end" style="padding-right:10px">El total es: @ViewBag.total</p>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $('#selectEnvio').change(function () {
+            var precio = $(this).find('option:selected').attr('data');
+            $('#IDPrecio').val(precio);
+        });
+    });
+</script>
+
+
+

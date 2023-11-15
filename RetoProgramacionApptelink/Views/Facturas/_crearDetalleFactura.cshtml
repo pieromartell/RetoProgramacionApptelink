@@ -1,0 +1,59 @@
+﻿@model RetoProgramacionApptelink.Models.ViewModels.DetalleFacturaViewModel
+
+@{
+    ViewData["Title"] = "_crearDetalleFactura";
+}
+
+<div class="modal  fade" id="CrearDetalleFactura" aria-labelledby="CreateModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Crear Detalle Factura</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <form asp-action="createDetalle" method="post">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label asp-for="IdFactura" class="control-label"></label>
+                        <input asp-for="IdFactura" class="form-control" readonly />
+                        <span asp-validation-for="IdFactura" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="CodigoProducto" class="control-label"></label>
+                        <select asp-for="CodigoProducto" id="selectEnvio" class="form-select form-select-sm" aria-label=".form-select-sm example">
+                            @foreach (var item in ViewBag.ListadoProducto1)
+                            {
+                                <option value="@item.Value" data="@item.Precio">@item.Text</option>
+                            }
+                        </select>
+                        <span asp-validation-for="CodigoProducto" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Cantidad" class="control-label"></label>
+                        <input asp-for="Cantidad" class="form-control" value="1" />
+                        <span asp-validation-for="Cantidad" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Precio" class="control-label"></label>
+                        <input asp-for="Precio" id="IDPrecio" class="form-control" type="text" />
+                        <span asp-validation-for="Precio" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                    <button type="submit" class="btn btn-primary">Guardar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $('#selectEnvio').change(function () {
+            var precio = $(this).find('option:selected').attr('data');
+            $('#IDPrecio').val(precio);
+        });
+    });
+</script>
