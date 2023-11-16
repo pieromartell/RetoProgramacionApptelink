@@ -42,7 +42,7 @@ namespace RetoProgramacionApptelink.Controllers
             if (validar == true)
                 return RedirectToAction("Index");
             else
-                return PartialView("_createProduct");
+                return RedirectToAction("Index");
         }
 
         public IActionResult Edit(int id)
